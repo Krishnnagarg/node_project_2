@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-project_2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chalk": "^5.6.0",
+    "eslint": "^9.33.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.17.2",
+    "nanoid": "^5.1.5",
+    "shortid": "^2.2.17"
+  }
+}
