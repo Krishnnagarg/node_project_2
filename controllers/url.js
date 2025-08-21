@@ -1,5 +1,5 @@
 import shortid from "shortid";
-import { URL } from "../models/url";
+import { URL } from "../models/url.js";
 
 async function handleGenerateNewShortURL(req,res) {
     const body = req.body;

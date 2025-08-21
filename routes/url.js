@@ -1,9 +1,9 @@
 import express from "express";
-import { URL } from "../models/url";
-import { handleGenerateNewShortURL } from "../controllers/url";
+
+import { handleGenerateNewShortURL } from "../controllers/url.js";
 
 const router = express.Router();
 
 router.post("/" , handleGenerateNewShortURL);
 
-export {router};
+export default router;
