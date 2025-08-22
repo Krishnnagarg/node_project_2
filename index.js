@@ -14,11 +14,11 @@ app.use(express.json());
 
 app.use("/url", urlRouter);
 
-app.get("/shortId", async (req, res) => {
+app.get("/:shortId", async (req, res) => {
   const shortId = req.params.shortId;
   const entry = await URL.findOneAndUpdate(
     {
-      shortID,
+      shortId,
     },
     {
       $push: {
@@ -28,6 +28,10 @@ app.get("/shortId", async (req, res) => {
       },
     }
   );
+  if (!entry) {
+    return res.status(404).json({ error: "Short URL not found" });
+  }
+  
   res.redirect(entry.redirectURL);
 });
 
