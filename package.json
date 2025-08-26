@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "chalk": "^5.6.0",
+    "ejs": "^3.1.10",
     "eslint": "^9.33.0",
     "express": "^5.1.0",
     "mongoose": "^8.17.2",
