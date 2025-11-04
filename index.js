@@ -1,27 +1,30 @@
 import express from "express";
 import path from "path";
-import urlRouter from "./routes/url.js";
-import { connectMongoDB } from "./connection.js";
+import { connectToMongoDB } from "./connection.js";
 import { URL } from "./models/url.js";
+
 import staticRoute from "./routes/staticRouter.js";
+import urlRoute from "./routes/url.js";
+import userRoute from "./routes/user.js";
 
 const app = express();
 const PORT = 8001;
 
-connectMongoDB("mongodb://127.0.0.1:27017/short_url")
+connectToMongoDB("mongodb://127.0.0.1:27017/short-url")
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.error("Error in MongoDB is:", err));
 
-app.set("view engine","ejs");
-app.set("views",path.resolve("./views"));
+// app.set("view engine","ejs");
+// app.set("views",path.resolve("./views"));
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));
 
-app.use("/url", urlRouter);
+app.use("/url", urlRoute);
+app.use("/user", userRoute);
 app.use("/", staticRoute);
 
-app.get("/url/:shortId", async (req, res) => {
+app.get("/:shortId", async (req, res) => {
   const shortId = req.params.shortId;
   const entry = await URL.findOneAndUpdate(
     {

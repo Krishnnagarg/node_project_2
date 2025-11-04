@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 mongoose.set("strictQuery",true);
 
-async function connectMongoDB(url) {
+async function connectToMongoDB(url) {
     return mongoose.connect(url);
 }
 
-export {connectMongoDB};
+export {connectToMongoDB};
